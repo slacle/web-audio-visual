@@ -1,9 +1,10 @@
 let dice = [];
 let sizeOfDice;
-const amountOfDice = 6;
+const amountOfDice = 9;
 const bgColor = 38;
 
 function setup() {
+  // createCanvas(1920, 1080);
   createCanvas(windowWidth, windowHeight - 4);
 
   noLoop();
@@ -13,7 +14,7 @@ function setup() {
   background(bgColor);
 
   // create background tangled lines
-  for (let i = 0; i < 750; i++) {
+  for (let i = 0; i < 1000; i++) {
     push();
     stroke(234, 179, 8, random(1, 50));
     line(
@@ -75,7 +76,7 @@ class Die {
         : this.color == "blue"
         ? color("#0ea5e9")
         : color("#22c55e");
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       push();
       strokeColor.setAlpha(random(50, 255));
       strokeWeight(random(2));
@@ -107,7 +108,7 @@ class Die {
   }
 
   connect(other) {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       push();
       strokeWeight(2);
 

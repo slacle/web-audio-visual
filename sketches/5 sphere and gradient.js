@@ -1,9 +1,10 @@
 let dice = [];
 let sizeOfDice;
-const amountOfDice = 6;
+const amountOfDice = 5;
 const bgColor = 38;
 
 function setup() {
+  // createCanvas(1920, 1080);
   createCanvas(windowWidth, windowHeight - 4);
 
   noLoop();
@@ -13,7 +14,7 @@ function setup() {
   background(bgColor);
 
   // create background tangled lines
-  for (let i = 0; i < 750; i++) {
+  for (let i = 0; i < 1000; i++) {
     push();
     stroke(234, 179, 8, random(1, 50));
     line(
@@ -27,11 +28,10 @@ function setup() {
 
   // create coordinates of each die, assign color, and add to dice array
   for (let i = 0; i < amountOfDice; i++) {
-    const x = floor(random(sizeOfDice * 1.5, width - sizeOfDice * 1.5));
-    const y = floor(random(sizeOfDice * 1.5, height - sizeOfDice * 1.5));
+    const x = floor(random(sizeOfDice, width - sizeOfDice));
+    const y = floor(random(sizeOfDice, height - sizeOfDice));
     const number = ceil(random(6));
-    console.log(number);
-    const color = number < 3 ? "red" : number > 4 ? "blue" : "green";
+    const color = number % 2 ? "red" : "blue";
 
     dice[i] = new Die(x, y, number, color);
   }
@@ -41,7 +41,7 @@ function draw() {
   // make sure there's at least one of each color
   let colorPresent = dice[0].color;
   if (dice.every((die) => die.color === colorPresent)) {
-    dice[1].color = colorPresent != "red" ? "red" : "blue";
+    dice[1].color = colorPresent == "blue" ? "red" : "blue";
   }
 
   // connect lines between dice
@@ -69,13 +69,8 @@ class Die {
   show() {
     // show outer colored circle
     fill(bgColor, 40);
-    let strokeColor =
-      this.color == "red"
-        ? color("#ef4444")
-        : this.color == "blue"
-        ? color("#0ea5e9")
-        : color("#22c55e");
-    for (let i = 0; i < 100; i++) {
+    let strokeColor = this.color == "red" ? color("#ef4444") : color("#0ea5e9");
+    for (let i = 0; i < 1000; i++) {
       push();
       strokeColor.setAlpha(random(50, 255));
       strokeWeight(random(2));
@@ -107,7 +102,7 @@ class Die {
   }
 
   connect(other) {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       push();
       strokeWeight(2);
 

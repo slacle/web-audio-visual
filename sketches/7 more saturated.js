@@ -4,6 +4,7 @@ const amountOfDice = 6;
 const bgColor = 38;
 
 function setup() {
+  // createCanvas(1920, 1080);
   createCanvas(windowWidth, windowHeight - 4);
 
   noLoop();
@@ -13,9 +14,9 @@ function setup() {
   background(bgColor);
 
   // create background tangled lines
-  for (let i = 0; i < 750; i++) {
+  for (let i = 0; i < 1000; i++) {
     push();
-    stroke(234, 179, 8, random(1, 50));
+    stroke(234, 179, 8, random(1, 100));
     line(
       random(-100, width + 100),
       random(-100, height + 100),
@@ -75,12 +76,12 @@ class Die {
         : this.color == "blue"
         ? color("#0ea5e9")
         : color("#22c55e");
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 1000; i++) {
       push();
       strokeColor.setAlpha(random(50, 255));
-      strokeWeight(random(2));
+      strokeWeight(random(3));
       stroke(strokeColor);
-      translate(this.x + random(-25, 25), this.y + random(-25, 25));
+      translate(this.x + random(-50, 50), this.y + random(-50, 50));
       angleMode(DEGREES);
       rotate(random(360));
       ellipse(
@@ -97,9 +98,10 @@ class Die {
     for (let i = 0; i < 10; i++) {
       push();
       stroke(163, random(40, 70));
-      circle(
-        this.x + random(-5, 5),
-        this.y + random(-5, 5),
+      ellipse(
+        this.x + random(-8, 8),
+        this.y + random(-8, 8),
+        random(this.diameter / 10 - 5, this.diameter / 10 + 5),
         random(this.diameter / 10 - 5, this.diameter / 10 + 5)
       );
       pop();
@@ -107,9 +109,9 @@ class Die {
   }
 
   connect(other) {
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 5; i++) {
       push();
-      strokeWeight(2);
+      strokeWeight(3);
 
       let gradient = drawingContext.createLinearGradient(
         this.x - this.diameter / 2 + (this.diameter / 4) * i,
