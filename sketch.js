@@ -4,7 +4,7 @@ const amountOfDice = 6;
 const bgColor = 38;
 
 function setup() {
-  createCanvas(windowWidth, windowHeight - 4);
+  createCanvas(windowWidth, windowHeight);
 
   noLoop();
 
